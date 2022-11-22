@@ -1,3 +1,4 @@
+import 'package:calendarproject/graph/controller/date_picker_controller.dart';
 import 'package:calendarproject/graph/view/graphdetail_view.dart';
 import 'package:pie_chart/pie_chart.dart';
 import 'package:flutter/cupertino.dart';
@@ -12,6 +13,8 @@ class Graph_View extends StatefulWidget {
 
 class _Graph_ViewState extends State<Graph_View> {
   final catigory_list = ["카테고리1","카테고리2","케테고리3","카테고리4"];
+  DateTime date = DateTime.now();
+  DateTime? picked_date;
 
 
 
@@ -25,19 +28,30 @@ class _Graph_ViewState extends State<Graph_View> {
       catigory_list[3]: 5,
     };
 
+    var color_list = [Colors.red,Colors.yellow,Colors.blue,Colors.white];
+
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.grey.shade200,
       appBar: AppBar(
         backgroundColor: Colors.grey,
         elevation: 0,
+        title: InkWell(
+            onTap: ()async{
+
+            picked_date = await showDatePicker(context: context, initialDate:  date, firstDate: DateTime(2000), lastDate: DateTime(2200));
+            setState(() {
+              picked_date;
+            });
+            },
+            child: picked_date != null? Text("${picked_date!.year} ${picked_date!.month} ${picked_date!.day}"):Text("${date.year} ${date.month} ${date.day}")),
       ),
       body: SingleChildScrollView(
 
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(18.0),
+              padding: const EdgeInsets.only(top: 30.0,bottom: 60),
               child: Text(
                 "총 지출 금액: ",
                 style: TextStyle(
@@ -51,11 +65,13 @@ class _Graph_ViewState extends State<Graph_View> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: PieChart(
+                    //카테고리별 생상지정
+                    colorList: [Colors.red,Colors.yellow,Colors.blue,Colors.white],
                     dataMap: dataMap,
                     animationDuration: Duration(milliseconds: 200),
-                    chartLegendSpacing: 32,
+                    chartLegendSpacing: 90,
                     chartRadius: MediaQuery.of(context).size.width / 3.2,
-                    ringStrokeWidth: 32,
+                    ringStrokeWidth: 10,
                     legendOptions: LegendOptions(
                       showLegendsInRow: false,
                       legendPosition: LegendPosition.right,
@@ -95,7 +111,7 @@ class _Graph_ViewState extends State<Graph_View> {
                           height: size.height*0.04,
                           child: Row(
                             children: [
-                              Icon(Icons.circle,color: Colors.grey,),
+                              Icon(Icons.circle,color: color_list[idx],),
                               Padding(
                                 padding: const EdgeInsets.only(left: 3.0),
                                 child: Text("${catigory_list[0]}"),

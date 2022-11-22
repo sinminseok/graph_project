@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../data_model.dart';
+import '../widget/day_widget.dart';
 
 class Calendar_Main extends StatefulWidget {
   const Calendar_Main({Key? key}) : super(key: key);
@@ -21,17 +22,6 @@ class _Calendar_MainState extends State<Calendar_Main> {
 
   //삽입 데이터 list
   List<Data?> data_list = [];
-
-  void test() {
-    for (var i = 0; i < 10; i++) {
-      Data data = Data();
-      data.id = i;
-      data.input = 500;
-      data.output = 500;
-      data.total = 1000;
-      data.datetime = "2022";
-    }
-  }
 
   //현재 화면 달,년도
   var this_month;
@@ -127,6 +117,7 @@ class _Calendar_MainState extends State<Calendar_Main> {
     return Scaffold(
         body: SingleChildScrollView(
             child: Column(
+
       children: [
         SizedBox(
           height: size.height * 0.1,
@@ -152,7 +143,7 @@ class _Calendar_MainState extends State<Calendar_Main> {
                 )),
             InkWell(
               onTap: () {
-                test();
+
               },
               child: Center(
                   child: Row(
@@ -239,353 +230,100 @@ class _Calendar_MainState extends State<Calendar_Main> {
                           : Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Container(
-                                    width: size.width * 0.1,
-                                    height: size.height * 0.1,
-                                    child: Column(children: [
-                                      Text("${date_list[0]}"),
-                                    ])),
-                                Container(
-                                    width: size.width * 0.1,
-                                    height: size.height * 0.1,
-                                    child: Column(children: [
-                                      Text("${date_list[1]}"),
-                                    ])),
-                                Container(
-                                    width: size.width * 0.1,
-                                    height: size.height * 0.1,
-                                    child: Column(children: [
-                                      Text("${date_list[2]}"),
-                                    ])),
-                                Container(
-                                    width: size.width * 0.1,
-                                    height: size.height * 0.1,
-                                    child: Column(children: [
-                                      Text("${date_list[3]}"),
-                                    ])),
-                                Container(
-                                    width: size.width * 0.1,
-                                    height: size.height * 0.1,
-                                    child: Column(children: [
-                                      Text("${date_list[4]}"),
-                                    ])),
-                                Container(
-                                    width: size.width * 0.1,
-                                    height: size.height * 0.1,
-                                    child: Column(children: [
-                                      Text("${date_list[5]}"),
-                                    ])),
-                                Container(
-                                    width: size.width * 0.1,
-                                    height: size.height * 0.1,
-                                    child: Column(children: [
-                                      Text("${date_list[6]}"),
-                                    ])),
+                                Day_Widget(size,date_list[0],null),
+                                Day_Widget(size,date_list[1],null),
+                                Day_Widget(size,date_list[2],null),
+                                Day_Widget(size,date_list[3],null),
+                                Day_Widget(size,date_list[4],null),
+                                Day_Widget(size,date_list[5],null),
+                                Day_Widget(size,date_list[6],null),
                               ],
                             )
                       : Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Container(
-                                width: size.width * 0.1,
-                                height: size.height * 0.1,
-                                child: Column(children: [
-                                  Text("${date_list[0]}"),
-                                ])),
-                            Container(
-                                width: size.width * 0.1,
-                                height: size.height * 0.1,
-                                child: Column(children: [
-                                  Text("${date_list[1]}"),
-                                ])),
-                            Container(
-                                width: size.width * 0.1,
-                                height: size.height * 0.1,
-                                child: Column(children: [
-                                  Text("${date_list[2]}"),
-                                ])),
-                            Container(
-                                width: size.width * 0.1,
-                                height: size.height * 0.1,
-                                child: Column(children: [
-                                  Text("${date_list[3]}"),
-                                ])),
-                            Container(
-                                width: size.width * 0.1,
-                                height: size.height * 0.1,
-                                child: Column(children: [
-                                  Text("${date_list[4]}"),
-                                ])),
-                            Container(
-                                width: size.width * 0.1,
-                                height: size.height * 0.1,
-                                child: Column(children: [
-                                  Text("${date_list[5]}"),
-                                ])),
-                            Container(
-                                width: size.width * 0.1,
-                                height: size.height * 0.1,
-                                child: Column(children: [
-                                  Text("${date_list[6]}"),
-                                ])),
-                          ],
-                        ),
-                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Container(
-                          width: size.width * 0.1,
-                          height: size.height * 0.1,
-                          child: Column(children: [
-                            Text("${date_list[7]}"),
-                          ])),
-                      Container(
-                          width: size.width * 0.1,
-                          height: size.height * 0.1,
-                          child: Column(children: [
-                            Text("${date_list[8]}"),
-                          ])),
-                      Container(
-                          width: size.width * 0.1,
-                          height: size.height * 0.1,
-                          child: Column(children: [
-                            Text("${date_list[9]}"),
-                          ])),
-                      Container(
-                          width: size.width * 0.1,
-                          height: size.height * 0.1,
-                          child: Column(children: [
-                            Text("${date_list[10]}"),
-                          ])),
-                      Container(
-                          width: size.width * 0.1,
-                          height: size.height * 0.1,
-                          child: Column(children: [
-                            Text("${date_list[11]}"),
-                          ])),
-                      Container(
-                          width: size.width * 0.1,
-                          height: size.height * 0.1,
-                          child: Column(children: [
-                            Text("${date_list[12]}"),
-                          ])),
-                      Container(
-                          width: size.width * 0.1,
-                          height: size.height * 0.1,
-                          child: Column(children: [
-                            Text("${date_list[13]}"),
-                          ])),
+                      Day_Widget(size,date_list[0],null),
+                      Day_Widget(size,date_list[1],null),
+                      Day_Widget(size,date_list[2],null),
+                      Day_Widget(size,date_list[3],null),
+                      Day_Widget(size,date_list[4],null),
+                      Day_Widget(size,date_list[5],null),
+                      Day_Widget(size,date_list[6],null),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Container(
-                          width: size.width * 0.1,
-                          height: size.height * 0.1,
-                          child: Column(children: [
-                            Text("${date_list[14]}"),
-                          ])),
-                      Container(
-                          width: size.width * 0.1,
-                          height: size.height * 0.1,
-                          child: Column(children: [
-                            Text("${date_list[15]}"),
-                          ])),
-                      Container(
-                          width: size.width * 0.1,
-                          height: size.height * 0.1,
-                          child: Column(children: [
-                            Text("${date_list[16]}"),
-                          ])),
-                      Container(
-                          width: size.width * 0.1,
-                          height: size.height * 0.1,
-                          child: Column(children: [
-                            Text("${date_list[17]}"),
-                          ])),
-                      Container(
-                          width: size.width * 0.1,
-                          height: size.height * 0.1,
-                          child: Column(children: [
-                            Text("${date_list[18]}"),
-                          ])),
-                      Container(
-                          width: size.width * 0.1,
-                          height: size.height * 0.1,
-                          child: Column(children: [
-                            Text("${date_list[19]}"),
-                          ])),
-                      Container(
-                          width: size.width * 0.1,
-                          height: size.height * 0.1,
-                          child: Column(children: [
-                            Text("${date_list[20]}"),
-                          ])),
+                      Day_Widget(size,date_list[7],null),
+                      Day_Widget(size,date_list[8],null),
+                      Day_Widget(size,date_list[9],null),
+                      Day_Widget(size,date_list[10],null),
+                      Day_Widget(size,date_list[11],null),
+                      Day_Widget(size,date_list[12],null),
+                      Day_Widget(size,date_list[13],null),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Container(
-                          width: size.width * 0.1,
-                          height: size.height * 0.1,
-                          child: Column(children: [
-                            Text("${date_list[21]}"),
-                          ])),
-                      Container(
-                          width: size.width * 0.1,
-                          height: size.height * 0.1,
-                          child: Column(children: [
-                            Text("${date_list[22]}"),
-                          ])),
-                      Container(
-                          width: size.width * 0.1,
-                          height: size.height * 0.1,
-                          child: Column(children: [
-                            Text("${date_list[23]}"),
-                          ])),
-                      Container(
-                          width: size.width * 0.1,
-                          height: size.height * 0.1,
-                          child: Column(children: [
-                            Text("${date_list[24]}"),
-                          ])),
-                      Container(
-                          width: size.width * 0.1,
-                          height: size.height * 0.1,
-                          child: Column(children: [
-                            Text("${date_list[25]}"),
-                          ])),
-                      Container(
-                          width: size.width * 0.1,
-                          height: size.height * 0.1,
-                          child: Column(children: [
-                            Text("${date_list[26]}"),
-                          ])),
-                      Container(
-                          width: size.width * 0.1,
-                          height: size.height * 0.1,
-                          child: Column(children: [
-                            Text("${date_list[27]}"),
-                          ])),
+                      Day_Widget(size,date_list[14],null),
+                      Day_Widget(size,date_list[15],null),
+                      Day_Widget(size,date_list[16],null),
+                      Day_Widget(size,date_list[17],null),
+                      Day_Widget(size,date_list[18],null),
+                      Day_Widget(size,date_list[19],null),
+                      Day_Widget(size,date_list[20],null),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Container(
-                          width: size.width * 0.1,
-                          height: size.height * 0.1,
-                          child: Column(children: [
-                            Text("${date_list[28]}"),
-                          ])),
-                      Container(
-                          width: size.width * 0.1,
-                          height: size.height * 0.1,
-                          child: Column(children: [
-                            Text("${date_list[29]}"),
-                          ])),
-                      Container(
-                          width: size.width * 0.1,
-                          height: size.height * 0.1,
-                          child: Column(children: [
-                            Text("${date_list[30]}"),
-                          ])),
-                      Container(
-                          width: size.width * 0.1,
-                          height: size.height * 0.1,
-                          child: Column(children: [
-                            Text("${date_list[31]}"),
-                          ])),
-                      Container(
-                          width: size.width * 0.1,
-                          height: size.height * 0.1,
-                          child: Column(children: [
-                            Text("${date_list[32]}"),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 8.0),
-                              child: Text(
-                                "수입 : 1000",
-                                style: TextStyle(fontSize: 7),
-                              ),
-                            ),
-                            Text(
-                              "수입 : 1000",
-                              style: TextStyle(fontSize: 7),
-                            ),
-                            Text(
-                              "수입 : 1000",
-                              style: TextStyle(fontSize: 7),
-                            ),
-                          ])),
-                      Container(
-                          width: size.width * 0.1,
-                          height: size.height * 0.1,
-                          child: Column(children: [
-                            Text("${date_list[33]}"),
-                          ])),
-                      Container(
-                          width: size.width * 0.1,
-                          height: size.height * 0.1,
-                          child: Column(children: [
-                            Text("${date_list[34]}"),
-                          ])),
+                      Day_Widget(size,date_list[21],null),
+                      Day_Widget(size,date_list[22],null),
+                      Day_Widget(size,date_list[23],null),
+                      Day_Widget(size,date_list[24],null),
+                      Day_Widget(size,date_list[25],null),
+                      Day_Widget(size,date_list[26],null),
+                      Day_Widget(size,date_list[27],null),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Day_Widget(size,date_list[28],null),
+                      Day_Widget(size,date_list[29],null),
+                      Day_Widget(size,date_list[30],null),
+                      Day_Widget(size,date_list[31],null),
+                      Day_Widget(size,date_list[32],null),
+                      Day_Widget(size,date_list[33],null),
+                      Day_Widget(size,date_list[34],null),
                     ],
                   ),
                   date_list.length == 42
                       ? Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Container(
-                                width: size.width * 0.1,
-                                height: size.height * 0.1,
-                                child: Column(children: [
-                                  Text("${date_list[35]}"),
-                                ])),
-                            Container(
-                                width: size.width * 0.1,
-                                height: size.height * 0.1,
-                                child: Column(children: [
-                                  Text("${date_list[36]}"),
-                                ])),
-                            Container(
-                                width: size.width * 0.1,
-                                height: size.height * 0.1,
-                                child: Column(children: [
-                                  Text("${date_list[37]}"),
-                                ])),
-                            Container(
-                                width: size.width * 0.1,
-                                height: size.height * 0.1,
-                                child: Column(children: [
-                                  Text("${date_list[38]}"),
-                                ])),
-                            Container(
-                                width: size.width * 0.1,
-                                height: size.height * 0.1,
-                                child: Column(children: [
-                                  Text("${date_list[39]}"),
-                                ])),
-                            Container(
-                                width: size.width * 0.1,
-                                height: size.height * 0.1,
-                                child: Column(children: [
-                                  Text("${date_list[40]}"),
-                                ])),
-                            Container(
-                                width: size.width * 0.1,
-                                height: size.height * 0.1,
-                                child: Column(children: [
-                                  Text("${date_list[41]}"),
-                                ])),
-                          ],
-                        )
-                      : Container(),
-                  
-                  Text("수입: 지출: 총합:",style: TextStyle(fontSize: 19,fontWeight: FontWeight.bold),)
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Day_Widget(size,date_list[35],null),
+                      Day_Widget(size,date_list[36],null),
+                      Day_Widget(size,date_list[37],null),
+                      Day_Widget(size,date_list[38],null),
+                      Day_Widget(size,date_list[39],null),
+                      Day_Widget(size,date_list[40],null),
+                      Day_Widget(size,date_list[41],null),
+                    ],
+                  )
+                      : Container(
+                    height: size.height * 0.1,
+                  ),
+
+
+
                 ],
-              )
+              ),
+              Container(
+                  margin: EdgeInsets.only(top: 0),
+                  child: Text("수입: 지출: 총합:",style: TextStyle(fontSize: 19,fontWeight: FontWeight.bold),))
+              
             ],
           ),
         ),
